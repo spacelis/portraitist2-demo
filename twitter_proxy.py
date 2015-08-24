@@ -13,6 +13,7 @@ from flask import Flask
 from flask import Response
 from flask import request
 from flask import send_from_directory
+from flask import redirect
 from requests_oauthlib import OAuth1Session
 
 
@@ -24,6 +25,12 @@ with open('cred.json') as fin:
                             CRED['access_token_secret'])
 
 app = Flask(__name__, static_folder='static', static_url_path='/static')
+
+
+@app.rout('/')
+def index():
+    return redirect('/examples/example.html')
+
 
 @app.route('/tp/<path:path>', methods=['GET', 'POST'])
 def reroute(path):
@@ -41,9 +48,11 @@ def reroute(path):
     del hdrs['content-encoding']
     return (r.text, r.status_code, hdrs.iteritems())
 
+
 @app.route('/<path:path>')
 def static_proxy(path):
     return send_from_directory('./client', path)
+
 
 if __name__ == "__main__":
     app.debug = True
