@@ -1,8 +1,6 @@
 #!/usr/bin/python
 import os
 import sys
-import wsgi
-from cherrypy import wsgiserver
 
 #hack to make sure we can load wsgi.py as a module in this class
 sys.path.insert(0, os.path.dirname(__file__))
@@ -17,6 +15,9 @@ except IOError:
 # IMPORTANT: Put any additional includes below this line.  If placed above this
 # line, it's possible required libraries won't be in your searchable path
 #
+import wsgi
+from cherrypy import wsgiserver
+
 ip = os.environ['OPENSHIFT_PYTHON_IP']
 port = int(os.environ['OPENSHIFT_PYTHON_PORT'])
 host_name = os.environ['OPENSHIFT_GEAR_DNS']
