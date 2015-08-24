@@ -4,7 +4,7 @@
   </head>
   <body>
     <div ng-controller="ResourceCtrl as ctrl">
-      <datasource name="Data Source" id="datasource" data-url="http://localhost:9090/tp/1.1/search/tweets.json?geocode=37.781157,-122.398720,1mi"></datasource>
+      <datasource name="Data Source" id="datasource" data-url="/tp/1.1/search/tweets.json?geocode=37.781157,-122.398720,1mi"></datasource>
       <tagcloud name="MyTags" id="tagcloud" data-dimension="text"></tagcloud>
       <timeline name="Timeline" id="timeline" data-dimension="created_at" data-scale="hour"></timeline>
       <piechart name="User" id="piechart" data-dimension="user.screen_name"></piechart>
