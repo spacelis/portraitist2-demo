@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <settingbox/>{{widget_name}}
+  </div>
+  <div class="panel-body" style="float: none">
+
+      <div class="form-inline" role="form">
+        <div class="form-group" style="width: 100%">
+          <input name="apiendpoint" id="{{widget_id}}-source" type="text" class="form-control" placeholder="{{url}}" ng-model="url" style="width: 80%">
+          <button type="button" class="btn btn-primary" ng-click="get(url)">Load</button>
+        </div>
+      </div>
+
+  </div>
+</div>

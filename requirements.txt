@@ -1,0 +1,8 @@
+flask
+oauthlib
+mongoengine
+requests
+requests-oauthlib
+tweepy
+markupsafe
+cherrypy==3.6.0
