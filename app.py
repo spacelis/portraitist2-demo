@@ -12,7 +12,7 @@ virtualenv = os.path.join(virtenv, 'bin/activate_this.py')
 try:
     execfile(virtualenv, dict(__file__=virtualenv))
 except IOError:
-    pass
+    print >>sys.sstderr, 'Failed to get into virtualenv'
 #
 # IMPORTANT: Put any additional includes below this line.  If placed above this
 # line, it's possible required libraries won't be in your searchable path
