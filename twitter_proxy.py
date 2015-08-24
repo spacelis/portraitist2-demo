@@ -43,7 +43,7 @@ def reroute(path):
 
 @app.route('/<path:path>')
 def static_proxy(path):
-    return send_from_directory('../client', path)
+    return send_from_directory('./client', path)
 
 if __name__ == "__main__":
     app.debug = True
