@@ -8,6 +8,7 @@ Email: Wen.Li@tudelft.nl
 GitHub: http://github.com/spacelis
 
 """
+import os
 import json
 from flask import Flask
 from flask import Response
@@ -17,12 +18,18 @@ from flask import redirect
 from requests_oauthlib import OAuth1Session
 
 
-with open('/opt/app-root/src/cred.json') as fin:
-    CRED = json.load(fin)
-    twitter = OAuth1Session(CRED['client_key'],
-                            CRED['client_secret'],
-                            CRED['access_token'],
-                            CRED['access_token_secret'])
+def load_credentials(path):
+    cred = {}
+    for p in os.listdir(path):
+        with open(os.path.join([path, p])) as fin:
+            cred[p] = fin.read()
+    return cred
+
+CRED = load_credentials('credentials')
+twitter = OAuth1Session(CRED['client_key'],
+                        CRED['client_secret'],
+                        CRED['access_token'],
+                        CRED['access_token_secret'])
 
 app = Flask(__name__, static_folder='static', static_url_path='/static')
 
@@ -38,7 +45,6 @@ def reroute(path):
     :returns: @todo
 
     """
-    print path
     if request.query_string:
         path = "/%s?%s" % (path, request.query_string)
     else:
