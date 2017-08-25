@@ -17,7 +17,7 @@ from flask import redirect
 from requests_oauthlib import OAuth1Session
 
 
-with open('cred.json') as fin:
+with open('/opt/app-root/src/cred.json') as fin:
     CRED = json.load(fin)
     twitter = OAuth1Session(CRED['client_key'],
                             CRED['client_secret'],
