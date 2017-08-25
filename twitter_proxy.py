@@ -21,8 +21,9 @@ from requests_oauthlib import OAuth1Session
 def load_credentials(path):
     cred = {}
     for p in os.listdir(path):
-        with open(os.path.join(path, p)) as fin:
-            cred[p] = fin.read()
+        if not p.startswith('.'):
+            with open(os.path.join(path, p)) as fin:
+                cred[p] = fin.read()
     return cred
 
 CRED = load_credentials('credentials')
