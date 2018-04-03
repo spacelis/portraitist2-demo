@@ -16,7 +16,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 # line, it's possible required libraries won't be in your searchable path
 #
 import wsgi
-from cherrypy import wsgiserver2
+from cherrypy import wsgiserver
 
-server = wsgiserver2.CherryPyWSGIServer(('0.0.0.0', 8080), wsgi.application)
+server = wsgiserver.CherryPyWSGIServer(('0.0.0.0', 8080), wsgi.application)
 server.start()
