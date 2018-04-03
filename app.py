@@ -16,12 +16,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 # line, it's possible required libraries won't be in your searchable path
 #
 import wsgi
-from cherrypy import wsgiserver
+from cherrypy import wsgiserver2
 
-ip = os.environ['OPENSHIFT_PYTHON_IP']
-port = int(os.environ['OPENSHIFT_PYTHON_PORT'])
-host_name = os.environ['OPENSHIFT_GEAR_DNS']
-
-
-server = wsgiserver.CherryPyWSGIServer((ip, port), wsgi.application, server_name=host_name)
+server = wsgiserver2.CherryPyWSGIServer(('0.0.0.0', 8080), wsgi.application)
 server.start()
