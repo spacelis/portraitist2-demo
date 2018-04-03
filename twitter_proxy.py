@@ -10,6 +10,7 @@ GitHub: http://github.com/spacelis
 """
 import os
 import json
+from time import sleep
 from flask import Flask
 from flask import Response
 from flask import request
@@ -26,7 +27,20 @@ def load_credentials(path):
                 cred[p] = fin.read()
     return cred
 
-CRED = load_credentials('credentials')
+CRED_FILE = '/etc/credentials'
+CRED = None
+while CRED is None:
+    try:
+        CRED = load_credentials(CRED_FILE)
+        sleep(3)
+    except err:
+        print 'Load credentials failed...'
+        print err
+        try:
+            print os.listdir(CRED_FILE)
+        except err:
+            print err
+
 twitter = OAuth1Session(CRED['client_key'],
                         CRED['client_secret'],
                         CRED['access_token'],
